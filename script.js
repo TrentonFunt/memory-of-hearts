@@ -1,6 +1,7 @@
 const cards = ["💖", "💖", "😍", "😍", "💌", "💌", "💕", "💕", "💘", "💘", "💓", "💓"];
 let flippedCards = [];
 let matchedCards = [];
+let moveCount = 0;
 
 
 function shuffle(array) {
@@ -42,6 +43,10 @@ function flipCard(event) {
     card.textContent = card.dataset.value;
     card.classList.add("flipped");
     flippedCards.push(card);
+
+    moveCount++;
+    document.getElementById("moves").textContent = moveCount;
+
     if (flippedCards.length === 2) {
       checkMatch();
     console.log("it is match");
@@ -99,6 +104,9 @@ function resetGame(){
     flippedCards = [];
     matchedCards = [];
     createBoard();
+
+    moveCount = 0;
+    document.getElementById("moves").textContent = "0";
 }
 
 createBoard();
